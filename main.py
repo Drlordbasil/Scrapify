@@ -29,7 +29,8 @@ class NLPModel:
 
     def generate_content(self, input_text):
         input_ids = self.tokenizer.encode(input_text, return_tensors='pt')
-        outputs = self.model.generate(input_ids)
+        outputs = self.model.generate(
+            input_ids, max_length=100, num_return_sequences=1)
         generated_text = self.tokenizer.decode(outputs[0])
         return generated_text
 
